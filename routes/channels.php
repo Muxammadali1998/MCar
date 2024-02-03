@@ -1,8 +1,6 @@
 <?php
 
-use App\Events\PeopleChange;
 use Illuminate\Support\Facades\Broadcast;
-use App\Events\PeopleEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +16,3 @@ use App\Events\PeopleEvent;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
-Broadcast::channel('people.{id}', PeopleEvent::class);
-Broadcast::channel('peoplechange.{id}', PeopleChange::class);
