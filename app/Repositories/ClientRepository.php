@@ -15,8 +15,16 @@ class ClientRepository implements Interfaces\ClientRepositoryInterface
         return $clients;
     }
 
-    public function find($client)
+    public function find($id)
     {
-        return new ClientResource($client);
+        $client = Client::find($id);
+        $client = new ClientResource($client);
+        return $client;
+    }
+
+    public function getClientInfos($request)
+    {
+        $client = $request->user();
+        return $client;
     }
 }

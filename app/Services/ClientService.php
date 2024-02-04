@@ -2,24 +2,23 @@
 
 namespace App\Services;
 
-use App\Helpers\Traits\ApiResponcer;
 use App\Http\Resources\ClientResource;
+use App\Models\Client;
 
-class ClientService{
-    use ApiResponcer;
+class ClientService
+{
 
-    public function update($request, $client){
-        $data = $request->validate([
-            'name' => ['required'],
-            'surname' => ['nullable'],
-            'age' => ['nullable'],
-            'photo' => ['nullable'],
-            'password' => ['required'],
-        ]);
+    public function update($request, $client)
+    {
+        $client->update($request->validate);
+        $client = new ClientResource($client);
+        return $client;
+    }
 
-        $client->update($data);
-
-        return new ClientResource($client);
+    public function destroy(Client $client)
+    {
+        $client->delete();
+        return true;
     }
 
 }

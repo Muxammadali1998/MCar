@@ -3,6 +3,7 @@ namespace App\Repositories\Interfaces;
 
 interface ClientRepositoryInterface{
     public function getAll();
-    public function find($client);
+    public function find($id);
+    public function getClientInfos($request);
 
 }

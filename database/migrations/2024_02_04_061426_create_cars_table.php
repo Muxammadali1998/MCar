@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    public function up()
+    {
+        Schema::create('cars', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('client_id')->constrained()->cascadeOnDelete();
+            $table->string('number');
+            $table->string('model');
+            $table->string('name');
+            $table->string('cooler')->nullable();
+            $table->string('year')->nullable();
+            $table->string('type')->nullable();
+            $table->string('photo')->nullable();
+            $table->boolean('is_comfort')->default(false);
+            $table->boolean('smoke')->default(false);
+            $table->boolean('conversation')->default(true);
+            $table->boolean('animals')->default(false);
+            $table->boolean('music')->default(true);
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('cars');
+    }
+};
