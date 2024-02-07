@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Api\V1\Client;
 
 use App\Helpers\Traits\ApiResponcer;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Client\UpdateRequest;
-use App\Models\Client;
 use App\Repositories\ClientRepository;
-use App\Services\ClientService;
+use App\Services\Client\ClientService;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Client;
 
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
@@ -8,9 +8,10 @@ use App\Models\Client;
 class ClientService
 {
 
-    public function update($request, $client)
+    public function update($request, $id)
     {
-        $client->update($request->validate);
+        $client=Client::find($id);
+        $client->update($request);
         $client = new ClientResource($client);
         return $client;
     }

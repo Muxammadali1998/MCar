@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\UpdateRequest;
 use App\Models\Client;
 use App\Repositories\ClientRepository;
-use App\Services\ClientService;
+use App\Services\Client\ClientService;
 use Illuminate\Http\Request;
 
 class ClientAccountController extends Controller
@@ -17,9 +17,9 @@ class ClientAccountController extends Controller
     public function __construct(public ClientService $clientService, public ClientRepository $clientRepository)
     {
     }
-    public function update(UpdateRequest $request, Client $client)
+    public function update(UpdateRequest $request, $id)
     {
-        $client = $this->clientService->update($request, $client);
+        $client = $this->clientService->update($request->validated(), $id);
         return $this->success($client);
     }
 

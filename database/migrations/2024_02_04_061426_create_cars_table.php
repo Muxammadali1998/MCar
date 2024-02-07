@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('client_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('client_id')->unique()->constrained()->cascadeOnDelete();
             $table->string('number');
             $table->string('model');
             $table->string('name');

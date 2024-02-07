@@ -9,7 +9,7 @@ class CarRequest extends FormRequest
     public function rules()
     {
         return [
-            'client_id' => ['required', 'integer'],
+            'client_id' => ['required', 'integer','unique:cars,client_id'],
             'number' => ['required'],
             'model' => ['required'],
             'name' => ['required'],
@@ -17,11 +17,11 @@ class CarRequest extends FormRequest
             'year' => ['nullable'],
             'type' => ['required'],
             'photo' => ['nullable'],
-            'is_comfort' => ['boolean'],
-            'smoke' => ['boolean'],
-            'conversation' => ['boolean'],
-            'animals' => ['boolean'],
-            'music' => ['boolean'],
+            'is_comfort' => ['boolean','nullable'],
+            'smoke' => ['boolean','nullable'],
+            'conversation' => ['boolean','nullable'],
+            'animals' => ['boolean','nullable'],
+            'music' => ['boolean','nullable'],
         ];
     }
 

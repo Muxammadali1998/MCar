@@ -15,6 +15,7 @@ class CarService
 
     public function update($request, $car)
     {
+
         $car->update($request);
         $car = new CarResource($car);
         return $car;

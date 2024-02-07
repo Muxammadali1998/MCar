@@ -9,11 +9,12 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'surname' => ['nullable'],
-            'age' => ['nullable'],
-            'photo' => ['nullable'],
-            'password' => ['required'],
+            'name' => ['string','max:255'],
+            'surname' => ['nullable','string','max:255'],
+            'age' => ['nullable','integer', 'max_digits:3'],
+            'phone'=>['string'],
+            'photo' => ['nullable','file'],
+            'password' => ['string','max:255','min:6'],
         ];
     }
 
